@@ -32,13 +32,13 @@ test:
         - pip
 
 about:
-    home: http://github.com/soft-matter/slicerator
+    home: https://github.com/soft-matter/slicerator
     license: BSD-3-Clause
     license_file: LICENSE
     license_family: BSD
     summary: A lazy-loading, fancy-sliceable iterable.
-    dev_url: http://github.com/soft-matter/slicerator
-    doc_url: http://github.com/soft-matter/slicerator
+    dev_url: https://github.com/soft-matter/slicerator
+    doc_url: https://github.com/soft-matter/slicerator
 
 extra:
     recipe-maintainers:
