@@ -1,37 +1,44 @@
-{% set version = "1.0.0" %}
+{% set version = "1.1.0" %}
 
 package:
     name: slicerator
     version: {{ version }}
 
 source:
-    fn: slicerator-v{{ version }}.tar.gz
     url: https://github.com/soft-matter/slicerator/archive/v{{ version }}.tar.gz
-    sha256: 047b10658527b9b12c9a0b9fc13f51e83c0620074db223e07e47b93b4cf1abae
+    sha256: a1fe86cb7c74d1a96fb0a899e8c5af1c5796dbff47ea88170a2e4ae6c2e73344
 
 build:
     number: 0
-    noarch: python
-    script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+    script: 
+        - cp {{ RECIPE_DIR }}/versioneer.py {{ SRC_DIR }}/ 
+        - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
     host:
         - python
         - pip
-
+        - setuptools
+        - wheel
     run:
         - python
-        - six
 
 test:
     imports:
         - slicerator
+    commands:
+        - pip check
+    requires:
+        - pip
 
 about:
-    home: http://github.com/soft-matter/slicerator
-    license: BSD 3-Clause
+    home: https://github.com/soft-matter/slicerator
+    license: BSD-3-Clause
     license_file: LICENSE
-    summary: 'A lazy-loading, fancy-sliceable iterable.'
+    license_family: BSD
+    summary: A lazy-loading, fancy-sliceable iterable.
+    dev_url: https://github.com/soft-matter/slicerator
+    doc_url: https://github.com/soft-matter/slicerator
 
 extra:
     recipe-maintainers:
